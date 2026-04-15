@@ -3,15 +3,15 @@ pipeline {
 
     stages {
 
-        stage('Build Docker') {
+        stage('Build Image') {
             steps {
-                sh 'docker compose build'
+                sh 'docker build -t lostandfound .'
             }
         }
 
-        stage('Run App') {
+        stage('Run Container') {
             steps {
-                sh 'docker compose up -d'
+                sh 'docker run -d -p 3000:3000 lostandfound'
             }
         }
     }
