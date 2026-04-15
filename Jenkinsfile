@@ -3,15 +3,27 @@ pipeline {
 
     stages {
 
-        stage('Build Image') {
+        stage('Checkout Code') {
             steps {
-                sh 'docker build -t lostandfound .'
+                git branch: 'main', url: 'https://github.com/Raichal028/Lostandfoundchat.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t lostandfound .'
+            }
+        }
+
+        stage('Stop Old Container (if running)') {
+            steps {
+                bat 'docker rm -f lostandfound || exit 0'
             }
         }
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d -p 3000:3000 lostandfound'
+                bat 'docker run -d -p 3000:3000 --name lostandfound lostandfound'
             }
         }
     }
