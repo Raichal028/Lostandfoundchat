@@ -3,27 +3,21 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
+        stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/Raichal028/Lostandfoundchat.git'
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Build Image (LOCAL HOST)') {
             steps {
-                sh 'docker build -t lostandfound .'
+                sh 'echo "Run docker build manually on host machine"'
             }
         }
 
-        stage('Stop Old Container') {
+        stage('Run App (LOCAL HOST)') {
             steps {
-                sh 'docker rm -f lostandfound || true'
-            }
-        }
-
-        stage('Run Container') {
-            steps {
-                sh 'docker run -d -p 3000:3000 --name lostandfound lostandfound'
+                sh 'echo "Run docker run manually on host machine"'
             }
         }
     }
