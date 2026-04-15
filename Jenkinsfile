@@ -11,19 +11,19 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t lostandfound .'
+                sh 'docker build -t lostandfound .'
             }
         }
 
-        stage('Stop Old Container (if running)') {
+        stage('Stop Old Container') {
             steps {
-                bat 'docker rm -f lostandfound || exit 0'
+                sh 'docker rm -f lostandfound || true'
             }
         }
 
         stage('Run Container') {
             steps {
-                bat 'docker run -d -p 3000:3000 --name lostandfound lostandfound'
+                sh 'docker run -d -p 3000:3000 --name lostandfound lostandfound'
             }
         }
     }
