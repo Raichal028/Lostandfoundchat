@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | LostFound</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body data-page="login">
+    <nav class="site-nav">
+      <div class="shell nav-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark">LF</span>
+          <span>LostFound</span>
+        </a>
+        <div class="nav-actions" data-auth-nav></div>
+      </div>
+    </nav>
+
+    <main class="shell auth-layout">
+      <section class="auth-card">
+        <span class="badge badge-accent">Welcome back</span>
+        <h1>Login to continue</h1>
+        <p>Access your dashboard, chats, claims, and item history.</p>
+
+        <form id="login-form" class="detail-stack">
+          <div class="floating-field">
+            <input id="login-email" name="email" type="email" placeholder=" " required />
+            <label for="login-email">Email</label>
+          </div>
+          <div class="floating-field">
+            <input id="login-password" name="password" type="password" placeholder=" " required />
+            <label for="login-password">Password</label>
+          </div>
+          <button class="btn btn-primary" type="submit">Login</button>
+          <a class="btn btn-ghost" href="/register">Create account</a>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="/js/auth.js"></script>
+  </body>
+</html>

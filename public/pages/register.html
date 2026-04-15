@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | LostFound</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body data-page="register">
+    <nav class="site-nav">
+      <div class="shell nav-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark">LF</span>
+          <span>LostFound</span>
+        </a>
+        <div class="nav-actions" data-auth-nav></div>
+      </div>
+    </nav>
+
+    <main class="shell auth-layout">
+      <section class="auth-card">
+        <span class="badge badge-accent">Create your account</span>
+        <h1>Join the recovery network</h1>
+        <p>Post items, verify ownership, and message instantly in one place.</p>
+
+        <form id="register-form" class="detail-stack" enctype="multipart/form-data">
+          <div class="preview-box">
+            <img id="profile-preview" src="/placeholder.svg" alt="Profile preview" />
+          </div>
+          <div class="floating-field">
+            <input id="register-name" name="name" type="text" placeholder=" " required />
+            <label for="register-name">Full name</label>
+          </div>
+          <div class="floating-field">
+            <input id="register-email" name="email" type="email" placeholder=" " required />
+            <label for="register-email">Email</label>
+          </div>
+          <div class="floating-field">
+            <input id="register-password" name="password" type="password" placeholder=" " required />
+            <label for="register-password">Password</label>
+          </div>
+          <div class="field">
+            <input id="profileImage" name="profileImage" type="file" accept="image/png,image/jpeg,image/webp" />
+            <label for="profileImage">Profile image</label>
+          </div>
+          <button class="btn btn-primary" type="submit">Create account</button>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="/js/auth.js"></script>
+  </body>
+</html>

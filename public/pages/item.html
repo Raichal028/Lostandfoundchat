@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Item Detail | LostFound</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body data-page="item">
+    <nav class="site-nav">
+      <div class="shell nav-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark">LF</span>
+          <span>LostFound</span>
+        </a>
+        <div class="nav-links">
+          <a href="/">Discover</a>
+          <a href="/dashboard">Dashboard</a>
+        </div>
+        <div class="nav-actions" data-auth-nav></div>
+      </div>
+    </nav>
+
+    <main class="shell detail-main">
+      <section class="detail-layout">
+        <div class="detail-card detail-image-shell">
+          <img id="item-image" class="detail-image" src="/placeholder.svg" alt="Item image" />
+        </div>
+
+        <div class="detail-stack">
+          <article class="detail-card">
+            <span id="item-type" class="badge badge-accent">item</span>
+            <h1 id="item-title">Loading item...</h1>
+            <p id="item-description"></p>
+            <div class="detail-meta">
+              <span class="badge" id="item-location">Location</span>
+              <span class="badge" id="item-date">Date</span>
+              <span class="badge" id="item-category">Category</span>
+              <span class="badge" id="item-status">Status</span>
+            </div>
+            <div class="detail-actions">
+              <button class="btn btn-primary" type="button" id="chat-trigger">Chat with poster</button>
+              <button class="btn btn-ghost" type="button" id="claim-trigger">I think this is mine</button>
+            </div>
+          </article>
+
+          <article class="detail-card">
+            <h3>Posted by</h3>
+            <div class="user-inline">
+              <div class="avatar" id="item-user-avatar"></div>
+              <div>
+                <strong id="item-user-name">Loading...</strong>
+                <p id="item-user-email" class="muted"></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="detail-card">
+            <h3>Possible matches</h3>
+            <div id="match-grid" class="match-grid"></div>
+          </article>
+
+          <article class="detail-card" id="owner-claims-panel" hidden>
+            <h3>Ownership claims</h3>
+            <div id="owner-claims" class="claim-grid"></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-overlay" id="claim-modal">
+      <div class="modal-panel">
+        <div class="modal-head">
+          <strong>Claim this item</strong>
+          <button class="icon-btn" type="button" data-close-modal>&times;</button>
+        </div>
+        <form id="claim-form" class="detail-stack">
+          <div class="floating-field">
+            <textarea name="message" placeholder=" " required></textarea>
+            <label>Tell the poster why this item might be yours</label>
+          </div>
+          <button class="btn btn-primary" type="submit">Send claim</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="chat-modal">
+      <div class="modal-panel">
+        <div class="modal-head">
+          <div>
+            <strong id="direct-chat-title">Conversation</strong>
+            <div id="direct-chat-meta" class="typing-indicator"></div>
+          </div>
+          <button class="icon-btn" type="button" data-close-modal>&times;</button>
+        </div>
+        <div class="detail-stack">
+          <div id="direct-chat-messages" class="chat-messages">
+            <div class="empty-state compact">Loading chat...</div>
+          </div>
+          <div id="direct-chat-typing" class="typing-indicator"></div>
+          <form id="direct-chat-form" class="chat-form">
+            <input id="direct-chat-input" type="text" placeholder="Type your message..." />
+            <button class="btn btn-primary" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/js/auth.js"></script>
+    <script type="module" src="/js/items.js"></script>
+  </body>
+</html>
