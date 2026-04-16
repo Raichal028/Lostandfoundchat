@@ -12,7 +12,7 @@ const chatRoutes = require('./routes/chatRoutes');
 const claimRoutes = require('./routes/claimRoutes');
 const setupChatSocket = require('./sockets/chatSocket');
 
-dotenv.config({ path: path.join(__dirname, '../.env') });
+dotenv.config();
 
 const app = express();
 const server = http.createServer(app);

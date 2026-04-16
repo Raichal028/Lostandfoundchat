@@ -2,11 +2,14 @@ FROM node:18
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm install
-
+# Copy entire project (so public folder is included)
 COPY . .
+
+# Go to server folder
+WORKDIR /app/server
+
+RUN npm install
 
 EXPOSE 5000
 
-CMD ["npm", "start"]
+CMD ["node", "server.js"]

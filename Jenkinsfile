@@ -9,15 +9,21 @@ pipeline {
             }
         }
 
-        stage('Build Image (LOCAL HOST)') {
+        stage('Stop Old Containers') {
             steps {
-                sh 'echo "Run docker build manually on host machine"'
+                sh 'docker-compose down || true'
             }
         }
 
-        stage('Run App (LOCAL HOST)') {
+        stage('Build & Run Containers') {
             steps {
-                sh 'echo "Run docker run manually on host machine"'
+                sh 'docker-compose up --build -d'
+            }
+        }
+
+        stage('Verify Running Containers') {
+            steps {
+                sh 'docker ps'
             }
         }
     }
