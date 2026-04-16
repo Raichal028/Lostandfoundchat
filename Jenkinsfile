@@ -3,40 +3,25 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
                 git branch: 'main', url: 'https://github.com/Raichal028/Lostandfoundchat.git'
             }
         }
 
-        stage('Stop Old Containers') {
+        stage('Build Docker Image') {
             steps {
-                sh '''
-                    docker stop backend mongo-db || true
-                    docker rm backend mongo-db || true
-                '''
+                sh 'docker build -t lostandfound-backend ./server'
             }
         }
 
-        stage('Build Backend Image') {
+        stage('Run Container') {
             steps {
-                sh 'docker build -t backend ./server'
+                sh 'docker run -d -p 5000:5000 --name backend lostandfound-backend || true'
             }
         }
 
-        stage('Run MongoDB') {
-            steps {
-                sh 'docker run -d --name mongo-db -p 27017:27017 mongo:6 || true'
-            }
-        }
-
-        stage('Run Backend') {
-            steps {
-                sh 'docker run -d --name backend -p 5000:5000 backend || true'
-            }
-        }
-
-        stage('Verify Running Containers') {
+        stage('Show Running Containers') {
             steps {
                 sh 'docker ps'
             }
