@@ -1,4 +1,5 @@
 🚀 Lost & Found Management System
+
 📌 Project Overview
 
 The Lost & Found Management System is a full-stack web application designed to simplify the process of reporting, searching, and claiming lost items within an organization or community. It provides a centralized platform where users can securely register, post lost/found item details, and communicate with others to quickly recover belongings.
@@ -32,6 +33,7 @@ DevOps & Deployment:
 Docker (Containerization)
 Jenkins (CI/CD Pipeline)
 Git & GitHub (Version Control)
+
 ✨ Key Features
 User authentication (Login/Register)
 Report lost or found items
