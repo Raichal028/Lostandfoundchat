@@ -11,19 +11,25 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t lostandfound-backend ./server'
+                bat 'docker build -t lostandfound-backend ./server'
+            }
+        }
+
+        stage('Stop Old Container') {
+            steps {
+                bat 'docker rm -f backend || exit 0'
             }
         }
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d -p 5000:5000 --name backend lostandfound-backend || true'
+                bat 'docker run -d -p 5000:5000 --name backend lostandfound-backend'
             }
         }
 
         stage('Show Running Containers') {
             steps {
-                sh 'docker ps'
+                bat 'docker ps'
             }
         }
     }
